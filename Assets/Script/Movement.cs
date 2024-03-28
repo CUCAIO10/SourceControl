@@ -1,42 +1,37 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private float horizontal;
-    private float speed = 8f;
-    private float jumpingPower = 16f;
-    private bool isFacingRight = true;
+    public CharacterController2D Controller;
+    public float runSpeed = 35f;
+    bool Jump = false;
+    public Animator animator;
 
-    [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private Transform groundCheck;
-    [SerializeField] private LayerMask groundLayer;
-
-    void Update()
+    float horizonalmove = 0f;
+    public void Start()
     {
-        horizontal = Input.GetAxisRaw("Horizontal");
-
-
-        Flip();
+        
     }
 
+    public void Update()
+    {
+     horizonalmove = Input.GetAxisRaw("Horizontal") * runSpeed;
+
+        animator.SetFloat("speed", Mathf.Abs( horizonalmove));
+
+        if(Input.GetButtonDown("Jump"))
+        {
+            Jump = true;
+        }
+        
+    }
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        //movimento
+        Controller.Move(horizonalmove * Time.fixedDeltaTime, false,false);
+        
     }
 
-    private bool IsGrounded()
-    {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
-    }
-
-    private void Flip()
-    {
-        if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
-        {
-            isFacingRight = !isFacingRight;
-            Vector3 localScale = transform.localScale;
-            localScale.x *= -1f;
-            transform.localScale = localScale;
-        }
-    }
 }
