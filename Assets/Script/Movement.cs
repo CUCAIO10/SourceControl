@@ -4,10 +4,11 @@ using System.Collections.Generic;
 
 public class PlayerMovement : MonoBehaviour
 {
+    
     public CharacterController2D Controller;
     public float runSpeed = 35f;
     
-     public KeyCode attackKey = KeyCode.Space;
+     // public KeyCode attackKey = KeyCode.Space;
 
     public Animator animator;
 
@@ -17,13 +18,13 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-    private GameObject attackArea = default;
+   /* private GameObject attackArea = default;
     private bool attacking = false;
     private float timeToAttack = 0.25f;
-    private float timer = 0f;
+    private float timer = 0f; */
     public void Start()
     {
-      attackArea = transform.GetChild(0).gameObject;
+      // attackArea = transform.GetChild(0).gameObject;
 
     }
 
@@ -33,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
         animator.SetFloat("speed", Mathf.Abs( horizonalmove));
         
-    if(Input.GetKeyDown(attackKey))
+   /* if(Input.GetKeyDown(attackKey))
     {
 
         Attack();
@@ -54,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-        }
+        } */
     }
     private void FixedUpdate()
     {
@@ -63,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    private void Attack()
+    /* private void Attack()
     {
 
         attacking = true;
@@ -72,5 +73,5 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-
+    */
 }

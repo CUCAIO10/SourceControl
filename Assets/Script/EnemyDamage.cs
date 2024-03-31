@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class EnemyDamage : MonoBehaviour
 {
-    public vita vita;
+    public Health Health;
     public int damage = 2;
     // Start is called before the first frame update
     void Start()
@@ -22,7 +22,7 @@ public class EnemyDamage : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            vita.TakeDamage(damage);
+            Health.Damage(damage);
         }
     }
 }

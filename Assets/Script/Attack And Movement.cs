@@ -20,7 +20,7 @@ public class AttackAndMovement : MonoBehaviour
 
     void Update()
     {
-        if (!isAttacking)
+       if (!isAttacking)
         {
             MoveBetweenPoints();
         }
