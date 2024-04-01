@@ -59,13 +59,11 @@ public class Health : MonoBehaviour
             this.health += Max_Health;
         }
     }
-    private void Die()
-        {
-
-            Destroy(gameObject);
-        
+private void Die()
+{
+    if (gameObject.CompareTag("Enemy"))
+    {
+        Destroy(gameObject);
     }
-    
-
-
+}
 }
